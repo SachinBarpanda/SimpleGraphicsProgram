@@ -12,5 +12,7 @@ public class Game {
         window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+        System.out.println("Width : " + window.getWidth());
+        System.out.println("Height : "+ window.getHeight());
     }
 }
