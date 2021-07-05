@@ -1,7 +1,7 @@
 package com.firstProject;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import javax.swing.*;
 
 public class GamePanel extends JPanel {
@@ -17,7 +17,24 @@ public class GamePanel extends JPanel {
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawString("JAVA 2D!",300,220);
 
+        g.setColor(new Color(255,0,0));
+        FontMetrics metrics = g.getFontMetrics();
+        Rectangle2D strRect = metrics.getStringBounds("JAVA 2D!",g);
+
+        int centrePanelX = WIDTH/2;
+        int centrePanelY = HEIGHT/2;
+
+        int strX = centrePanelX-(int)(strRect.getWidth()/2);
+        int strY = centrePanelY - (int)(strRect.getHeight()/2);
+
+
+        g.drawLine(0,strY,WIDTH,strY);
+        g.drawLine(centrePanelX,0,centrePanelX,HEIGHT);
+//        g.drawString("JAVA 2D!",strX,strY);
+
+        Font myFont =  new Font(Font.MONOSPACED, Font.BOLD, 24);
+        g.setFont(myFont);
+        g.drawString("JAVA 2D!",strX,strY);
     }
 }
